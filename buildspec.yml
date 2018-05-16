@@ -1,4 +1,3 @@
-
 version: 0.0
 environment_variables:
     plaintext:
@@ -6,6 +5,10 @@ environment_variables:
         "S3_BUCKET": ""
 containers:
     LambdaFunctions:
+        phases:
+            during_build:
+                commands:
+                    - aws cloudformation package --template $INPUT_FILE --s3-bucket $S3_BUCKET --output-template post-saml.yaml
         artifacts:
             files:
                 - post-saml.yaml
