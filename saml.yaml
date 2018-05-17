@@ -7,12 +7,24 @@ Resources:
     GetTiles:
         Type: AWS::Serverless::Function
         Properties:
-            Handler: main.lambda_handler
+            Handler: get_tiles.lambda_handler
             Runtime: python2.7
-            CodeUri: ./
+            CodeUri: ./functions
             Events:
               GetResource:
                 Type: Api
                 Properties:
                   Path: /tilebase
+				  Method: get
+    GetVersion:
+        Type: AWS::Serverless::Function
+        Properties:
+            Handler: get_version.lambda_handler
+            Runtime: python2.7
+            CodeUri: ./functions
+            Events:
+              GetResource:
+                Type: Api
+                Properties:
+                  Path: /tilebase/version
                   Method: get
