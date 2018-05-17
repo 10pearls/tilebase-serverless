@@ -1,30 +1,31 @@
 Transform: 'AWS::Serverless-2016-10-31'
 Parameters:
-    OriginUrl:
-        Description: "The origin url to allow CORS requests from. This will be the base URL of your static SAM website."
-        Type: "String"
+  OriginUrl:
+    Description: "The origin url to allow CORS requests from. This will be the base URL of your static SAM website."
+    Type: "String"
 Resources:
-    GetTiles:
-        Type: AWS::Serverless::Function
-        Properties:
-            Handler: get_tiles.lambda_handler
-            Runtime: python2.7
-            CodeUri: ./functions
-            Events:
-              GetResource:
-                Type: Api
-                Properties:
-                  Path: /tilebase
-				  Method: get
-    GetVersion:
-        Type: AWS::Serverless::Function
-        Properties:
-            Handler: get_version.lambda_handler
-            Runtime: python2.7
-            CodeUri: ./functions
-            Events:
-              GetResource:
-                Type: Api
-                Properties:
-                  Path: /tilebase/version
-                  Method: get
+  GetTiles:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: get_tiles.lambda_handler
+      Runtime: python2.7
+      CodeUri: ./functions
+      Events:
+        GetResource:
+          Type: Api
+          Properties:
+            Path: /tilebase
+            Method: get
+
+  GetVersion:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: get_version.lambda_handler
+      Runtime: python2.7
+      CodeUri: ./functions
+      Events:
+        GetResource:
+          Type: Api
+          Properties:
+            Path: /tilebase/version
+            Method: get
